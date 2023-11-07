@@ -3,15 +3,42 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Homepage from './Components/Home/Homepage.jsx';
+import LoginPage from './Components/LoginPage/LoginPage.jsx';
+import RegisterPage from './Components/RegisterPage/RegisterPage.jsx';
+import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
+import AddJob from './Components/AddJob/AddJob.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Homepage></Homepage>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage></LoginPage>,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage></RegisterPage>,
+      },
+      {
+        path: "/add-job",
+        element: <AddJob></AddJob>,
+      },
+    ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

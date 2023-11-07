@@ -16,8 +16,5 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
-  },
-  daisyui: {
-    themes: ["light", "dark", "cupcake", "retro"],
-  },
+  }
 };
