@@ -1,10 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "/gigrapidLogo.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCloudMoon, faQuestion, } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCloudMoon,
+  faQuestion,
+} from "@fortawesome/free-solid-svg-icons";
 import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import axios from "axios";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const handleLogout = () => {
@@ -25,6 +30,22 @@ const Navbar = () => {
       setTheme("light");
     }
   };
+
+  const [userFromDB, setUserFromDB] = useState();
+
+  useEffect(() => {
+    const fetchUserDataFromDB = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/getUser?email=${user?.email}`);
+        const userData = response.data;
+        console.log(userData)
+        setUserFromDB(userData);
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+    fetchUserDataFromDB();
+  }, [user]);
 
   const navLinks = (
     <>
@@ -102,11 +123,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        {user?.photoURL ? (
+        {userFromDB?.photoURL ? (
           <div className="text-center lg:text-base sm:text-xs flex">
-            {user.displayName}
+            {userFromDB.userName}
             <img
-              src={user.photoURL}
+              src={userFromDB.photoURL}
               className="lg:w-12 lg: w-8 h-8 items-center rounded-full"
             ></img>
           </div>

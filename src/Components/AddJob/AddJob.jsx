@@ -1,4 +1,26 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 const AddJob = () => {
+  const { user } = useContext(AuthContext);
+  const [userFromDB, setUserFromDB] = useState();
+
+  useEffect(() => {
+    const fetchUserDataFromDB = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/getUser?email=${user?.email}`
+        );
+        const userData = response.data;
+        console.log(userData);
+        setUserFromDB(userData);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchUserDataFromDB();
+  }, [user]);
   const handleAddJob = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -8,26 +30,41 @@ const AddJob = () => {
     const jobCategory = form.get("jobCategory");
     const jobMinPrice = form.get("jobMinPrice");
     const jobMaxPrice = form.get("jobMaxPrice");
-    console.log(
-      jobTitle,
-      jobDeadline,
-      jobDescription,
-      jobCategory,
-      jobMinPrice,
-      jobMaxPrice
-    );
+    const jobDetails = {
+      "Job Title": jobTitle,
+      "Job Deadline": jobDeadline,
+      "Job Description": jobDescription,
+      "Job Category": jobCategory,
+      "Job Minimum Price": jobMinPrice,
+      "Job Maximum Price": jobMaxPrice,
+    };
+    console.log(jobDetails);
+
+    axios
+      .post("http://localhost:5000/add-job", jobDetails)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center dark:bg-gray-600 dark:text-white">
       <form className="w-full max-w-lg" onSubmit={handleAddJob}>
         <h2 className="text-center text-2xl my-8 font-bold">
           Post a Job and get the best Men for you job
         </h2>
+        <div className="text-xl font-medium my-8">
+          You are posting as Job as{" "}
+          <span className="text-green-600">{userFromDB?.userName}</span> with
+          Email: <span className="text-green-600">{userFromDB?.userEmail}</span>
+        </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-white"
               htmlFor="grid-job-title"
             >
               Job Title
@@ -43,13 +80,13 @@ const AddJob = () => {
 
           <div className="w-full md:w-1/2 px-3">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-white"
               htmlFor="grid-deadline"
             >
               Deadline
             </label>
             <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white  focus:border-gray-500"
               id="grid-deadline"
               type="date"
               name="jobDeadline"
@@ -61,7 +98,7 @@ const AddJob = () => {
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="block dark:text-white uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-Description"
             >
               Description
@@ -74,7 +111,7 @@ const AddJob = () => {
               placeholder="Job Description"
               rows="8"
             />
-            <p className="text-gray-600 text-xs italic">
+            <p className="dark:text-white text-gray-600 text-xs italic">
               Make this as deatail as possible
             </p>
           </div>
@@ -83,7 +120,7 @@ const AddJob = () => {
         <div className="flex flex-wrap -mx-3 mb-2">
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-category"
             >
               Category
@@ -104,14 +141,14 @@ const AddJob = () => {
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              className="dark:text-white block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-job-title"
             >
               Minimum Price ($)
             </label>
             <input
               name="jobMinPrice"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-4 leading-tight focus:outline-none focus:bg-white"
+              className="dark:text-white appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-4 leading-tight focus:outline-none focus:bg-white"
               id="grid-min-price"
               type="text"
               placeholder="Minimum Price"

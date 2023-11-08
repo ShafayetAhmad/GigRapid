@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
 
 const LoginPage = () => {
   const { userLogin, googleLogin } = useContext(AuthContext);
@@ -14,6 +15,20 @@ const LoginPage = () => {
     googleLogin()
       .then((userCredentials) => {
         console.log(userCredentials);
+        const name = userCredentials.displayName;
+        const email = userCredentials.email;
+        const photoUrl = userCredentials.photoURL;
+        const userDetails = {
+          userName: name,
+          userEmail: email,
+          photoURL: photoUrl,
+        };
+        axios
+          .post("http://localhost:5000/add-user", {
+            userDetails,
+          })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
