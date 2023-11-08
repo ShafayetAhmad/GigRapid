@@ -1,6 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import { useNavigate } from "react-router-dom";
+
 const SingleCard = ({ job }) => {
+    const navigate = useNavigate();
+  const handleBidNow = () => {
+      console.log(job._id);
+      navigate(`/jobs/${job._id}`)
+  };
+
   return (
     <div className="bg-white rounded-lg border-8 shadow-lg p-4 m-4 hover:scale-110 transition-transform relative">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">{job.JobTitle}</h2>
@@ -23,7 +31,10 @@ const SingleCard = ({ job }) => {
             <strong>Owner Email:</strong> {job.JobOwnerEmail}
           </p>
         </div>
-        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4 hover:bg-blue-700 absolute bottom-4 left-4">
+        <button
+          onClick={handleBidNow}
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4 hover:bg-blue-700 absolute bottom-4 left-4"
+        >
           Bid Now
         </button>
       </div>

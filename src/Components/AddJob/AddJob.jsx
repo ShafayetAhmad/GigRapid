@@ -47,13 +47,14 @@ const AddJob = () => {
       .post("http://localhost:5000/add-job", jobDetails)
       .then((res) => {
         console.log(res);
-        alert("adde");
-        swal({
-          title: "Success",
-          text: "Job Added Succesfully",
-          icon: "success",
-          button: "Okay",
-        });
+        if (res.data.insertedId) {
+          swal({
+            title: "Success",
+            text: "Job Added Succesfully",
+            icon: "success",
+            button: "Okay",
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -62,7 +63,7 @@ const AddJob = () => {
 
   return (
     <div className="flex items-center justify-center dark:bg-gray-600 dark:text-white">
-      <form className="w-full max-w-lg" onSubmit={handleAddJob}>
+      <form className="w-full px-8" onSubmit={handleAddJob}>
         <h2 className="text-center text-2xl my-8 font-bold">
           Post a Job and get the best Men for you job
         </h2>

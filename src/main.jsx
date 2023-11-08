@@ -9,6 +9,9 @@ import RegisterPage from './Components/RegisterPage/RegisterPage.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import AddJob from './Components/AddJob/AddJob.jsx';
+import JobDetails from './Components/JobDetails/JobDetails.jsx';
+import MyBids from './Components/MyBids/MyBids.jsx';
+import MyPostedJobs from './Components/MyPostedJobs/MyPostedJobs.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +33,18 @@ const router = createBrowserRouter([
       {
         path: "/add-job",
         element: <AddJob></AddJob>,
+      },
+      {
+        path: "/jobs/:id",
+        element: <JobDetails></JobDetails>,
+      },
+      {
+        path: "/my-bids",
+        element: <MyBids></MyBids>,
+      },
+      {
+        path: "/my-posted-jobs",
+        element: <MyPostedJobs></MyPostedJobs>,
       },
     ],
   },
