@@ -27,6 +27,8 @@ const JobDetails = () => {
       Buyer: buyer,
       Seller: seller,
       JobId: id,
+      "Status": "pending",
+      "Completed": false,
     };
 
     axios

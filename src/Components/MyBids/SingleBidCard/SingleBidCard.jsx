@@ -8,6 +8,16 @@ const SingleBidCard = ({ bid }) => {
   console.log(bid);
   console.log(jobId);
   const [jobDetails, setJobDetails] = useState(null);
+  const handleCompletedBtn = () => {
+    axios
+      .post("http://localhost:5000/taskCompleted", {
+        jobId: jobId,
+        completed: true,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
 
   useEffect(() => {
     const getJobData = async () =>
@@ -21,49 +31,30 @@ const SingleBidCard = ({ bid }) => {
   }, [jobId]);
 
   return (
-    // <div className="bg-white rounded-lg border-8 shadow-lg p-4 m-4 hover:scale-110 transition-transform relative">
-    //   <h2 className="text-2xl font-bold text-gray-800 mb-4">
-    //     {jobDetails?.JobTitle}
-    //   </h2>
-    //   <div className="text-gray-600 flex flex-col justify-between h-full">
-    //     <div>
-    //       <p>
-    //         <strong>Deadline:</strong> {jobDetails?.JobDeadline}
-    //       </p>
-    //       <p>
-    //         <strong>Description:</strong> {jobDetails?.JobDescription}
-    //       </p>
-    //       <p>
-    //         <strong>Category:</strong> {jobDetails?.JobCategory}
-    //       </p>
-
-    //       <p className="">
-    //         <strong>Owner Email:</strong> {jobDetails?.JobOwnerEmail}
-    //       </p>
-    //       <p className="">
-    //         <strong>You Bid this job for: $</strong>{bid?.BidPrice}
-    //       </p>
-    //       <p className="mb-16">
-    //         <strong>Your Message to Owner:</strong> {bid?.Message}
-    //       </p>
-    //     </div>
-    //   </div>
-    // </div>
-    <tr key={bid._id}>
+    <tr key={bid?._id}>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">{jobDetails?.JobTitle}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{ bid?.Buyer}</div>
+        <div className="text-sm text-gray-900">{bid?.Buyer}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{ bid?.Deadline}</div>
+        <div className="text-sm text-gray-900">{bid?.Deadline}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{bid?.status}</div>
+        <div className="text-sm text-gray-900">{bid?.Status}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{bid?.completed}</div>
+        <div className="text-sm text-gray-900">
+          {bid?.Status === "in progress" && (
+            <button className="btn btn-info" onClick={handleCompletedBtn}>
+              Completed?
+            </button>
+          )}
+          {bid?.Status === "Completed" && <p>Task Completed</p>}
+          {bid?.Status === "pending" && <p>Wait For Approval</p>}
+          {bid?.Status === "declined" && <p>Declined</p>}
+        </div>
       </td>
     </tr>
   );

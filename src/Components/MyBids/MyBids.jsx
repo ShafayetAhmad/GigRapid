@@ -23,7 +23,7 @@ const MyBids = () => {
 
   return (
     <div>
-      <h1>My Bids{myBids.length}</h1>
+      <h1 className="text-4xl font-bold text-center my-16">You Have Done Total {myBids.length} Bids</h1>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -50,8 +50,6 @@ const MyBids = () => {
           ))}
         </tbody>
       </table>
-
-      
     </div>
   );
 };

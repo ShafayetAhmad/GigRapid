@@ -20,8 +20,12 @@ const SingleJob = ({ job, onDelete }) => {
           icon: "success",
           button: "Okay",
         });
-          onDelete();
+        onDelete();
       });
+  };
+
+  const handleBidderList = () => {
+    navigate(`/bidderList/${job._id}`);
   };
 
   return (
@@ -49,6 +53,7 @@ const SingleJob = ({ job, onDelete }) => {
             <button className="btn btn-info" onClick={handleUpdateJob}>
               Update
             </button>
+
             <button className="btn btn-info" onClick={handleDeleteJob}>
               Delete
             </button>

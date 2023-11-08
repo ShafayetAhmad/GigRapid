@@ -1,18 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from './Components/Home/Homepage.jsx';
-import LoginPage from './Components/LoginPage/LoginPage.jsx';
-import RegisterPage from './Components/RegisterPage/RegisterPage.jsx';
-import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
-import AuthProvider from './Provider/AuthProvider.jsx';
-import AddJob from './Components/AddJob/AddJob.jsx';
-import JobDetails from './Components/JobDetails/JobDetails.jsx';
-import MyBids from './Components/MyBids/MyBids.jsx';
-import MyPostedJobs from './Components/MyPostedJobs/MyPostedJobs.jsx';
-import UpdateJob from './Components/MyPostedJobs/UpdateJob/UpdateJob.jsx';
+import Homepage from "./Components/Home/Homepage.jsx";
+import LoginPage from "./Components/LoginPage/LoginPage.jsx";
+import RegisterPage from "./Components/RegisterPage/RegisterPage.jsx";
+import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
+import AuthProvider from "./Provider/AuthProvider.jsx";
+import AddJob from "./Components/AddJob/AddJob.jsx";
+import JobDetails from "./Components/JobDetails/JobDetails.jsx";
+import MyBids from "./Components/MyBids/MyBids.jsx";
+import MyPostedJobs from "./Components/MyPostedJobs/MyPostedJobs.jsx";
+import UpdateJob from "./Components/MyPostedJobs/UpdateJob/UpdateJob.jsx";
+import BidderList from "./Components/BidderList/BidderList.jsx";
+import BidRequests from "./Components/BidRequests/BidRequests.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,7 +53,14 @@ const router = createBrowserRouter([
         path: "/updateJob/:id",
         element: <UpdateJob></UpdateJob>,
       },
-      
+      {
+        path: "/bidderList/:id",
+        element: <BidderList></BidderList>,
+      },
+      {
+        path: "/bid-requests",
+        element: <BidRequests></BidRequests>
+      },
     ],
   },
 ]);
