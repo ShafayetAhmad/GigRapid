@@ -25,7 +25,7 @@ const GetTabData = ({ category }) => {
       </h2>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
         {tabData.map((singleData) => (
-          <SingleCard key={singleData.id} job={singleData}></SingleCard>
+          <SingleCard key={singleData._id} job={singleData}></SingleCard>
         ))}
       </div>
     </div>

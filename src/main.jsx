@@ -12,6 +12,7 @@ import AddJob from './Components/AddJob/AddJob.jsx';
 import JobDetails from './Components/JobDetails/JobDetails.jsx';
 import MyBids from './Components/MyBids/MyBids.jsx';
 import MyPostedJobs from './Components/MyPostedJobs/MyPostedJobs.jsx';
+import UpdateJob from './Components/MyPostedJobs/UpdateJob/UpdateJob.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         path: "/my-posted-jobs",
         element: <MyPostedJobs></MyPostedJobs>,
       },
+      {
+        path: "/updateJob/:id",
+        element: <UpdateJob></UpdateJob>,
+      },
+      
     ],
   },
 ]);

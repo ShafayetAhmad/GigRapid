@@ -1,29 +1,14 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
-const AddJob = () => {
+const UpdateJob = () => {
+  const { id } = useParams();
   const { user } = useContext(AuthContext);
-  const [userFromDB, setUserFromDB] = useState();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchUserDataFromDB = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/getUser?email=${user?.email}`
-        );
-        const userData = response.data;
-        console.log(userData);
-        setUserFromDB(userData);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchUserDataFromDB();
-  }, [user]);
   const handleAddJob = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -46,13 +31,16 @@ const AddJob = () => {
     console.log(jobDetails);
 
     axios
-      .post("http://localhost:5000/add-job", jobDetails)
+      .post("http://localhost:5000/update-job", {
+        JobId: id,
+        JobDetails: jobDetails,
+      })
       .then((res) => {
-        console.log(res);
-        if (res.data.insertedId) {
+        console.log(res.data.modifiedCount);
+        if (res.data.modifiedCount) {
           swal({
             title: "Success",
-            text: "Job Added Succesfully",
+            text: "Job Updated Succesfully",
             icon: "success",
             button: "Okay",
           });
@@ -68,14 +56,25 @@ const AddJob = () => {
     <div className="flex items-center justify-center dark:bg-gray-600 dark:text-white">
       <form className="w-full px-8" onSubmit={handleAddJob}>
         <h2 className="text-center text-2xl my-8 font-bold">
-          Post a Job and get the best Men for you job
+          You are updating a job You created earlier.
         </h2>
-        <div className="text-xl font-medium my-8">
-          You are posting a Job as{" "}
-          <span className="text-green-600">{userFromDB?.userName}</span> with
-          Email: <span className="text-green-600">{userFromDB?.userEmail}</span>
-        </div>
+
         <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
+              Your Email (You can not change this.)
+            </label>
+            <input
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-gray-200"
+              id="email"
+              type="text"
+              value={user?.email}
+              readOnly
+            />
+          </div>
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 dark:text-white"
@@ -190,7 +189,7 @@ const AddJob = () => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
-            Add Job
+            Update Job
           </button>
         </div>
       </form>
@@ -198,4 +197,4 @@ const AddJob = () => {
   );
 };
 
-export default AddJob;
+export default UpdateJob;

@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
 
 const JobDetails = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState(null);
   const { id } = useParams();
   const { user } = useContext(AuthContext);
@@ -26,22 +26,22 @@ const JobDetails = () => {
       Message: message,
       Buyer: buyer,
       Seller: seller,
+      JobId: id,
     };
-    console.log(price, deadline, message, buyer, seller);
 
     axios
       .post(`http://localhost:5000/storeBidData`, bidData)
       .then((res) => {
-          console.log(res);
-          if (res.data.insertedId) {
-              swal({
-                title: "Success",
-                text: "Bid Succesful",
-                icon: "success",
-                button: "Okay",
-              });
-          }
-          navigate("/my-bids");
+        console.log(res);
+        if (res.data.insertedId) {
+          swal({
+            title: "Success",
+            text: "Bid Succesful",
+            icon: "success",
+            button: "Okay",
+          });
+        }
+        navigate("/my-bids");
       })
       .catch((error) => {
         console.log(error);
