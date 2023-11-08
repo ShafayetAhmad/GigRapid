@@ -87,7 +87,8 @@ const UpdateJob = () => {
               id="grid-job-title"
               type="text"
               name="jobTitle"
-              placeholder="Job Name"
+                          placeholder="Job Name"
+                          required
             />
           </div>
 
@@ -103,7 +104,8 @@ const UpdateJob = () => {
               id="grid-deadline"
               type="date"
               name="jobDeadline"
-              placeholder="Date"
+                          placeholder="Date"
+                          required
             />
           </div>
         </div>
@@ -122,7 +124,8 @@ const UpdateJob = () => {
               id="grid-Description"
               type="text"
               placeholder="Job Description"
-              rows="8"
+                          rows="8"
+                          required
             />
             <p className="dark:text-white text-gray-600 text-xs italic">
               Make this as deatail as possible
@@ -142,7 +145,8 @@ const UpdateJob = () => {
               name="jobCategory"
               className="h-8 w-48"
               id="grid-category"
-              type="text"
+                          type="text"
+                          required
             >
               <option value="">Select Category</option>
               <option value="Web Development">Web Development</option>
@@ -164,7 +168,8 @@ const UpdateJob = () => {
               className="dark:text-white appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-4 leading-tight focus:outline-none focus:bg-white"
               id="grid-min-price"
               type="text"
-              placeholder="Minimum Price"
+                          placeholder="Minimum Price"
+                          required
             />
           </div>
 
@@ -179,7 +184,8 @@ const UpdateJob = () => {
               name="jobMaxPrice"
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-deadline"
-              type="text"
+                          type="text"
+                          required
               placeholder="Maximum Price"
             />
           </div>

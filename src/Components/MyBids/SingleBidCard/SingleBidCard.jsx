@@ -21,34 +21,51 @@ const SingleBidCard = ({ bid }) => {
   }, [jobId]);
 
   return (
-    <div className="bg-white rounded-lg border-8 shadow-lg p-4 m-4 hover:scale-110 transition-transform relative">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">
-        {jobDetails?.JobTitle}
-      </h2>
-      <div className="text-gray-600 flex flex-col justify-between h-full">
-        <div>
-          <p>
-            <strong>Deadline:</strong> {jobDetails?.JobDeadline}
-          </p>
-          <p>
-            <strong>Description:</strong> {jobDetails?.JobDescription}
-          </p>
-          <p>
-            <strong>Category:</strong> {jobDetails?.JobCategory}
-          </p>
+    // <div className="bg-white rounded-lg border-8 shadow-lg p-4 m-4 hover:scale-110 transition-transform relative">
+    //   <h2 className="text-2xl font-bold text-gray-800 mb-4">
+    //     {jobDetails?.JobTitle}
+    //   </h2>
+    //   <div className="text-gray-600 flex flex-col justify-between h-full">
+    //     <div>
+    //       <p>
+    //         <strong>Deadline:</strong> {jobDetails?.JobDeadline}
+    //       </p>
+    //       <p>
+    //         <strong>Description:</strong> {jobDetails?.JobDescription}
+    //       </p>
+    //       <p>
+    //         <strong>Category:</strong> {jobDetails?.JobCategory}
+    //       </p>
 
-          <p className="">
-            <strong>Owner Email:</strong> {jobDetails?.JobOwnerEmail}
-          </p>
-          <p className="">
-            <strong>You Bid this job for: $</strong>{bid?.BidPrice}
-          </p>
-          <p className="mb-16">
-            <strong>Your Message to Owner:</strong> {bid?.Message}
-          </p>
-        </div>
-      </div>
-    </div>
+    //       <p className="">
+    //         <strong>Owner Email:</strong> {jobDetails?.JobOwnerEmail}
+    //       </p>
+    //       <p className="">
+    //         <strong>You Bid this job for: $</strong>{bid?.BidPrice}
+    //       </p>
+    //       <p className="mb-16">
+    //         <strong>Your Message to Owner:</strong> {bid?.Message}
+    //       </p>
+    //     </div>
+    //   </div>
+    // </div>
+    <tr key={bid._id}>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="text-sm text-gray-900">{jobDetails?.JobTitle}</div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{ bid?.Buyer}</div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{ bid?.Deadline}</div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{bid?.status}</div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">{bid?.completed}</div>
+      </td>
+    </tr>
   );
 };
 

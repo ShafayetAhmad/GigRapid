@@ -2,15 +2,26 @@
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
-const SingleJob = ({ job }) => {
-    const navigate = useNavigate();
+const SingleJob = ({ job, onDelete }) => {
+  const navigate = useNavigate();
   const handleUpdateJob = () => {
-      console.log(job._id);
-      navigate(`/updateJob/${job._id}`);
+    navigate(`/updateJob/${job._id}`);
   };
   const handleDeleteJob = () => {
-    console.log(job._id);
+    axios
+      .delete(`http://localhost:5000/deleteJob?jobId=${job._id}`)
+      .then((res) => {
+        console.log(res);
+        swal({
+          title: "Success",
+          text: "Job Deleted Succesfully",
+          icon: "success",
+          button: "Okay",
+        });
+          onDelete();
+      });
   };
 
   return (
