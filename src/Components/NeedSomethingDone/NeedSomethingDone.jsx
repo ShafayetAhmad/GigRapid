@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NeedSomethingDone = () => {
     return (
-      <div className="my-8">
+      <div className="my-8 dark:bg-gray-600 dark:text-white">
         <div className="lg:text-left text-center">
           <h3 className="lg:mb-4 mb-2 text-3xl font-bold">
             Need Something Done?

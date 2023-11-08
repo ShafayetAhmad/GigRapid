@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 const AddJob = () => {
   const { user } = useContext(AuthContext);
@@ -30,6 +31,7 @@ const AddJob = () => {
     const jobCategory = form.get("jobCategory");
     const jobMinPrice = form.get("jobMinPrice");
     const jobMaxPrice = form.get("jobMaxPrice");
+    const jobBuyerMail = user.email;
     const jobDetails = {
       "Job Title": jobTitle,
       "Job Deadline": jobDeadline,
@@ -37,6 +39,7 @@ const AddJob = () => {
       "Job Category": jobCategory,
       "Job Minimum Price": jobMinPrice,
       "Job Maximum Price": jobMaxPrice,
+      "Job Buyer Mail": jobBuyerMail,
     };
     console.log(jobDetails);
 
@@ -44,6 +47,13 @@ const AddJob = () => {
       .post("http://localhost:5000/add-job", jobDetails)
       .then((res) => {
         console.log(res);
+        alert("adde");
+        swal({
+          title: "Success",
+          text: "Job Added Succesfully",
+          icon: "success",
+          button: "Okay",
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +67,7 @@ const AddJob = () => {
           Post a Job and get the best Men for you job
         </h2>
         <div className="text-xl font-medium my-8">
-          You are posting as Job as{" "}
+          You are posting a Job as{" "}
           <span className="text-green-600">{userFromDB?.userName}</span> with
           Email: <span className="text-green-600">{userFromDB?.userEmail}</span>
         </div>
