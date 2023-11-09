@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
       }
     });
     return () => unSubscribe();
-  }, []);
+  }, [user]);
 
   return (
     <AuthContext.Provider
