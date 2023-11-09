@@ -1,7 +1,7 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
@@ -27,7 +27,7 @@ const LoginPage = () => {
           photoURL: photoUrl,
         };
         axios
-          .post("http://localhost:5000/add-user", {
+          .post("https://gig-rapid-server.vercel.app/add-user", {
             userDetails,
           })
           .then((res) => console.log(res))
