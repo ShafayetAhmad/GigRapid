@@ -4,6 +4,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import SingleJob from "./SingleJob/SingleJob";
 
 const MyPostedJobs = () => {
+   useEffect(() => {
+     document.title = "GigRapid | My Posted Jobs";
+   }, []);
   const { user } = useContext(AuthContext);
 
   const [myJobs, setMyJobs] = useState([]);

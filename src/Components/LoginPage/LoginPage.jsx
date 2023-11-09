@@ -7,6 +7,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 
 const LoginPage = () => {
+   useEffect(() => {
+     document.title = "GigRapid | Login";
+   }, []);
   const { userLogin, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();

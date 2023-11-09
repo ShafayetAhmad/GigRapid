@@ -4,6 +4,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import SingleBidCard from "./SingleBidCard/SingleBidCard";
 
 const MyBids = () => {
+   useEffect(() => {
+     document.title = "GigRapid | My Bids";
+   }, []);
   const { user } = useContext(AuthContext);
 
   const [myBids, setMyBids] = useState([]);

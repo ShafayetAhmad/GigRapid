@@ -4,6 +4,9 @@ import axios from "axios";
 import swal from "sweetalert";
 
 const BidRequests = () => {
+   useEffect(() => {
+     document.title = "GigRapid | Bid Requests";
+   }, []);
   const { user } = useContext(AuthContext);
   const [bidRequestsData, setBidRequestsData] = useState([]);
 
