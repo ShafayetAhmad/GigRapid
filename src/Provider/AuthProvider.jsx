@@ -15,12 +15,14 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const googleAuthProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
+  const [registerError, setRegisterError] = useState(null);
   const registerUser = async (email, password) => {
     setLoading(true);
     try {
       return await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.log(error.message);
+      setRegisterError(error.message);
     } finally {
       setLoading(false);
     }
@@ -72,6 +74,7 @@ const AuthProvider = ({ children }) => {
         userLogin,
         googleLogin,
         loading,
+        registerError,
       }}
     >
       {children}

@@ -11,12 +11,13 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 
 const RegisterPage = () => {
-   useEffect(() => {
-     document.title = "GigRapid | Register";
-   }, []);
+  useEffect(() => {
+    document.title = "GigRapid | Register";
+  }, []);
   const navigate = useNavigate();
   const location = useLocation();
-  const { registerUser, googleLogin } = useContext(AuthContext);
+  const [passwordError, setPasswordError] = useState(null);
+  const { registerUser, googleLogin, registerError } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
     googleLogin()
       .then((userCredentials) => {
@@ -48,6 +49,22 @@ const RegisterPage = () => {
     const email = form.get("email").toLocaleLowerCase();
     const password = form.get("password");
     const photoUrl = form.get("photoUrl");
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError("Password must contain at least one capital letter");
+      return;
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      setPasswordError("Password must contain at least one special character");
+      return;
+    }
+
+    setPasswordError("");
     const userDetails = {
       userName: name,
       userEmail: email,
@@ -60,16 +77,19 @@ const RegisterPage = () => {
           .post("https://gig-rapid-server.vercel.app/add-user", {
             userDetails,
           })
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
-        navigate(location?.state ? location.state : "/");
+          .then((res) => {
+            console.log(res);
+            navigate(location?.state ? location.state : "/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((error) => {
         console.log(error.message);
+            
       });
   };
-  const [registerError, setRegisterError] = useState(null);
-  const [passwordError, setPasswordError] = useState(null);
   return (
     <div className="flex">
       <section className="flex-1">
@@ -206,7 +226,6 @@ const RegisterPage = () => {
           </div>
         </div>
       </section>
-      <div className="flex-1">text</div>
     </div>
   );
 };
