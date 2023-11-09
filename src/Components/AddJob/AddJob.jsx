@@ -5,6 +5,9 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
+   useEffect(() => {
+     document.title = "GigRapid | Add Job";
+   }, []);
   const { user } = useContext(AuthContext);
   const [userFromDB, setUserFromDB] = useState();
   const navigate = useNavigate();
@@ -105,6 +108,7 @@ const AddJob = () => {
               type="date"
               name="jobDeadline"
               placeholder="Date"
+              min={new Date().toISOString().split("T")[0]} // Set the min attribute to the current date
             />
           </div>
         </div>

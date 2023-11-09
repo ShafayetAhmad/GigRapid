@@ -12,6 +12,11 @@ const JobDetails = () => {
   const userEmail = user?.email;
   const buyerEmail = jobDetails?.JobOwnerEmail;
   const isOwner = userEmail === buyerEmail;
+  const currentDate = new Date();
+  const jobDeadlineDate = new Date(jobDetails?.JobDeadline);
+
+  const deadlineOver = jobDeadlineDate < currentDate;
+
   const handleBidSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -22,13 +27,14 @@ const JobDetails = () => {
     const seller = userEmail;
     const bidData = {
       BidPrice: price,
+      JobTitle: jobDetails.JobTitle,
       Deadline: deadline,
       Message: message,
       Buyer: buyer,
       Seller: seller,
       JobId: id,
-      "Status": "pending",
-      "Completed": false,
+      Status: "pending",
+      Completed: false,
     };
 
     axios
@@ -190,12 +196,19 @@ const JobDetails = () => {
                 isOwner ? "cursor-not-allowed" : "hover:bg-blue-700"
               }`}
               type="submit"
-              disabled={isOwner}
+              disabled={isOwner || deadlineOver}
             >
               Bid on the project
             </button>
             {isOwner ? (
               <p className="text-red-600">You can not bid on your own Job</p>
+            ) : (
+              ""
+            )}
+            {deadlineOver ? (
+              <p className="text-red-600">
+                You can not bid on Job after Deadline passed
+              </p>
             ) : (
               ""
             )}

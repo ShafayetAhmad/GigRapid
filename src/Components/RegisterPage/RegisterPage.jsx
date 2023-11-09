@@ -5,12 +5,15 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 
 const RegisterPage = () => {
+   useEffect(() => {
+     document.title = "GigRapid | Register";
+   }, []);
   const navigate = useNavigate();
   const location = useLocation();
   const { registerUser, googleLogin } = useContext(AuthContext);
@@ -18,9 +21,9 @@ const RegisterPage = () => {
     googleLogin()
       .then((userCredentials) => {
         console.log(userCredentials);
-        const name = userCredentials.displayName;
-        const email = userCredentials.email;
-        const photoUrl = userCredentials.photoURL;
+        const name = userCredentials.user.displayName;
+        const email = userCredentials.user.email;
+        const photoUrl = userCredentials.user.photoURL;
         const userDetails = {
           userName: name,
           userEmail: email,

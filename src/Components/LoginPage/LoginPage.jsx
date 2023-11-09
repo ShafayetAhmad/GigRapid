@@ -1,12 +1,15 @@
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 
 const LoginPage = () => {
+   useEffect(() => {
+     document.title = "GigRapid | Login";
+   }, []);
   const { userLogin, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,9 +18,9 @@ const LoginPage = () => {
     googleLogin()
       .then((userCredentials) => {
         console.log(userCredentials);
-        const name = userCredentials.displayName;
-        const email = userCredentials.email;
-        const photoUrl = userCredentials.photoURL;
+        const name = userCredentials.user.displayName;
+        const email = userCredentials.user.email;
+        const photoUrl = userCredentials.user.photoURL;
         const userDetails = {
           userName: name,
           userEmail: email,

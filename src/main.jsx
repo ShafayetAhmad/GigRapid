@@ -15,6 +15,7 @@ import MyPostedJobs from "./Components/MyPostedJobs/MyPostedJobs.jsx";
 import UpdateJob from "./Components/MyPostedJobs/UpdateJob/UpdateJob.jsx";
 import BidderList from "./Components/BidderList/BidderList.jsx";
 import BidRequests from "./Components/BidRequests/BidRequests.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,19 +36,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-job",
-        element: <AddJob></AddJob>,
+        element: (
+          <PrivateRoute>
+            <AddJob></AddJob>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/jobs/:id",
-        element: <JobDetails></JobDetails>,
+        element: (
+          <PrivateRoute>
+            <JobDetails></JobDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-bids",
-        element: <MyBids></MyBids>,
+        element: (
+          <PrivateRoute>
+            <MyBids></MyBids>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-posted-jobs",
-        element: <MyPostedJobs></MyPostedJobs>,
+        element: (
+          <PrivateRoute>
+            <MyPostedJobs></MyPostedJobs>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateJob/:id",
@@ -59,7 +76,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/bid-requests",
-        element: <BidRequests></BidRequests>
+        element: (
+          <PrivateRoute>
+            <BidRequests></BidRequests>
+          </PrivateRoute>
+        ),
       },
     ],
   },

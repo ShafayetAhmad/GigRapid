@@ -1,31 +1,34 @@
 /* eslint-disable react/prop-types */
-
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 const SingleJob = ({ job, onDelete }) => {
   const navigate = useNavigate();
+
   const handleUpdateJob = () => {
     navigate(`/updateJob/${job._id}`);
   };
-  const handleDeleteJob = () => {
-    axios
-      .delete(`http://localhost:5000/deleteJob?jobId=${job._id}`)
-      .then((res) => {
-        console.log(res);
-        swal({
-          title: "Success",
-          text: "Job Deleted Succesfully",
-          icon: "success",
-          button: "Okay",
-        });
-        onDelete();
-      });
-  };
 
-  const handleBidderList = () => {
-    navigate(`/bidderList/${job._id}`);
+  const handleDeleteJob = () => {
+    swal({
+      title: "Are you sure?",
+      text: "You will not be able to revert this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`http://localhost:5000/deleteJob?jobId=${job._id}`)
+          .then((res) => {
+            console.log(res);
+            swal("Success", "Job Deleted Successfully", "success").then(() => {
+              onDelete();
+            });
+          });
+      }
+    });
   };
 
   return (
