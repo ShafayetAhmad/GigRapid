@@ -7,7 +7,7 @@ const HighestRatedGig = () => {
             Higest Rated Seller On Our Site
           </h2>
           <p className="mx-auto mb-8 mt-4 max-w-lg text-center text-[#636262] md:mb-16">
-            Lorem ipsum dolor sit amet elit ut aliquam
+            Get you work done by Best Sellers in The Market
           </p>
 
           <ul className="mx-auto grid lg:gap-4 sm:grid-cols-2 md:grid-cols-3 max-w-lg md:max-w-5xl">
@@ -18,7 +18,7 @@ const HighestRatedGig = () => {
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
               <p className="font-bold">John</p>
-              <p className="text-sm text-[#636262]">Webflow Developer</p>
+              <p className="text-sm text-[#636262]">React Developer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -43,7 +43,7 @@ const HighestRatedGig = () => {
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
               <p className="font-bold">Annisyah</p>
-              <p className="text-sm text-[#636262]">Webflow Developer</p>
+              <p className="text-sm text-[#636262]">Angular Developer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -68,7 +68,7 @@ const HighestRatedGig = () => {
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
               <p className="font-bold">Tamara</p>
-              <p className="text-sm text-[#636262]">Webflow Developer</p>
+              <p className="text-sm text-[#636262]">Graphic Designer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -93,7 +93,7 @@ const HighestRatedGig = () => {
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
               <p className="font-bold">Kevin</p>
-              <p className="text-sm text-[#636262]">Product Manager</p>
+              <p className="text-sm text-[#636262]">Digital Marketer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -143,7 +143,7 @@ const HighestRatedGig = () => {
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
               <p className="font-bold">Ben Watson</p>
-              <p className="text-sm text-[#636262]">Founder, CEO</p>
+              <p className="text-sm text-[#636262]">Digital Marketer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
