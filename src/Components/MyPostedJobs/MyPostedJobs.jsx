@@ -14,7 +14,7 @@ const MyPostedJobs = () => {
   useEffect(() => {
     const getMyJobs = async () => {
       await axios
-        .get(`https://gig-rapid-server.vercel.app/getMyPostedJobs?email=${user?.email}`)
+        .get(`http://localhost:5000/getMyPostedJobs?email=${user?.email}`)
         .then((res) => {
           console.log(res.data);
           setMyJobs(res.data);
@@ -25,7 +25,7 @@ const MyPostedJobs = () => {
 
   const onDelete = () => {
     axios
-      .get(`https://gig-rapid-server.vercel.app/getMyPostedJobs?email=${user?.email}`)
+      .get(`http://localhost:5000/getMyPostedJobs?email=${user?.email}`)
       .then((res) => {
         console.log(res.data);
         setMyJobs(res.data);

@@ -36,7 +36,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUserDataFromDB = async () => {
       try {
-        const response = await axios.get(`https://gig-rapid-server.vercel.app/getUser?email=${user?.email}`);
+        const response = await axios.get(`http://localhost:5000/getUser?email=${user?.email}`);
         const userData = response.data;
         console.log(userData)
         setUserFromDB(userData);

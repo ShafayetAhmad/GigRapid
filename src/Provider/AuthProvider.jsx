@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import auth from "../../firebase.config";
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -58,9 +59,20 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email; const loggedUser = { email: userEmail };
       console.log("user on auth changed: ", currentUser);
       setUser(currentUser);
       setLoading(false);
+      if (currentUser) {
+       
+        axios
+          .post("http://localhost:5000/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } 
     });
     return () => unSubscribe();
   }, []);

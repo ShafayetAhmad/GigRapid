@@ -12,7 +12,7 @@ const SingleBidCard = ({ bid }) => {
   const [jobDetails, setJobDetails] = useState(null);
   const handleCompletedBtn = async () => {
     await axios
-      .post("https://gig-rapid-server.vercel.app/taskCompleted", {
+      .post("http://localhost:5000/taskCompleted", {
         jobId: jobId,
         completed: true,
       })
@@ -27,7 +27,7 @@ const SingleBidCard = ({ bid }) => {
       button: "Okay",
     });
     await axios
-      .get(`https://gig-rapid-server.vercel.app/singleJobData?id=${jobId}`)
+      .get(`http://localhost:5000/singleJobData?id=${jobId}`)
       .then((res) => {
         console.log(res.data);
         setJobDetails(res.data);
@@ -37,7 +37,7 @@ const SingleBidCard = ({ bid }) => {
   useEffect(() => {
     const getJobData = async () =>
       await axios
-        .get(`https://gig-rapid-server.vercel.app/singleJobData?id=${jobId}`)
+        .get(`http://localhost:5000/singleJobData?id=${jobId}`)
         .then((res) => {
           console.log(res.data);
           setJobDetails(res.data);
