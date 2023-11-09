@@ -27,7 +27,7 @@ const LoginPage = () => {
           photoURL: photoUrl,
         };
         axios
-          .post("http://localhost:5000/add-user", {
+          .post("https://gig-rapid-server.vercel.app/add-user", {
             userDetails,
           })
           .then((res) => console.log(res))

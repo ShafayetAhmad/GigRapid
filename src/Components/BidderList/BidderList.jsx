@@ -11,7 +11,7 @@ const BidderList = () => {
 //   const handleBidderAccept = async (id, verdict) => {
 //     console.log(id, verdict);
 //     await axios
-//       .post("http://localhost:5000/bidderAccept", {
+//       .post("https://gig-rapid-server.vercel.app/bidderAccept", {
 //         jobId: id,
 //         verdict: verdict,
 //       })
@@ -35,7 +35,7 @@ const BidderList = () => {
 //         }
 //       });
 
-//     await axios(`http://localhost:5000/getBidderList?jobId=${id}`).then(
+//     await axios(`https://gig-rapid-server.vercel.app/getBidderList?jobId=${id}`).then(
 //       (res) => {
 //         console.log(res.data);
 //         setBidList(res.data);
@@ -44,7 +44,7 @@ const BidderList = () => {
 //   };
 //   useEffect(() => {
 //     const getBidderList = async () => {
-//       await axios(`http://localhost:5000/getBidderList?jobId=${id}`).then(
+//       await axios(`https://gig-rapid-server.vercel.app/getBidderList?jobId=${id}`).then(
 //         (res) => {
 //           console.log(res.data);
 //           setBidList(res.data);
