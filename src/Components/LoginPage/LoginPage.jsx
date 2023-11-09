@@ -157,7 +157,6 @@ const LoginPage = () => {
           </div>
         </div>
       </section>
-      <div className="flex-1">Text</div>
     </div>
   );
 };
