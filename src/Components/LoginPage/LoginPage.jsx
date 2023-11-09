@@ -27,7 +27,7 @@ const LoginPage = () => {
           photoURL: photoUrl,
         };
         axios
-          .post("http://localhost:5000/add-user", {
+          .post("https://gig-rapid-server.vercel.app/add-user", {
             userDetails,
           })
           .then((res) => console.log(res))
@@ -36,6 +36,7 @@ const LoginPage = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        setLoginError(`Invalid Email/Password. Please Enter Correctly. `);
       });
   };
   const handleUserLogin = (e) => {
@@ -50,6 +51,9 @@ const LoginPage = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        setLoginError(
+          `Invalid Email/Password. Please enter correct credentials. ${error.message}`
+        );
       });
   };
 

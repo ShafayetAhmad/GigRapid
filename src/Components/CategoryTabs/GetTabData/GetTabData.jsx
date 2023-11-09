@@ -8,7 +8,7 @@ const GetTabData = ({ category }) => {
   useEffect(() => {
     const getData = async () =>
       await axios
-        .get(`http://localhost:5000/getTabData?Category=${category}`)
+        .get(`https://gig-rapid-server.vercel.app/getTabData?Category=${category}`)
         .then((res) => {
           // console.log(res.data.slice(0, 4));
           // setTabData(res.data.slice(0, 4));
