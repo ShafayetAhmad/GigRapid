@@ -1,6 +1,6 @@
 ## Project Name
 
-- **Project Name:** GigRapid
+- **Project Name:** GigRapid - A Freelancing Platform.
 
 ## Key Features
 
@@ -16,6 +16,8 @@
 
 ## Live Demo
 
-To see this project in action, you can visit the live demo [here](https://gigrapid.web.app/).
+Live Site: [GigRapid Live](https://gigrapid.web.app/).
 
-Feel free to add actual content, screenshots, and more details to your GitHub README to make it informative and engaging for potential users and contributors.
+Backend Code: [GigRapid Backend](https://github.com/ShafayetAhmad/GigRapid-server)
+
+Technology Used: React, Tailwind, React Router, Express.js, Firebase, MongoDB, Firebase Authentication, Vercel.

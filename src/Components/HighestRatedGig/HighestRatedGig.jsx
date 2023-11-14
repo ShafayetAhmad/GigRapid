@@ -36,14 +36,15 @@ const HighestRatedGig = () => {
                 </a>
               </div>
             </li>
+
             <li className="mx-auto flex max-w-xs flex-col items-center gap-4 py-6 md:py-4 text-center">
               <img
-                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635b47d5a5453de17e4e9bd8_Rectangle%2035-4.png"
+                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635b4809622b0572f305f9f2_Rectangle%2035-5.png"
                 alt=""
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
-              <p className="font-bold">Annisyah</p>
-              <p className="text-sm text-[#636262]">Angular Developer</p>
+              <p className="font-bold">Kevin</p>
+              <p className="text-sm text-[#636262]">Digital Marketer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -61,14 +62,15 @@ const HighestRatedGig = () => {
                 </a>
               </div>
             </li>
+
             <li className="mx-auto flex max-w-xs flex-col items-center gap-4 py-6 md:py-4 text-center">
               <img
-                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635a0f4adfb4938a1a06002c_Rectangle%2035-2.png"
+                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635a0f55fa526007c5a03e57_Ellipse%2017.png"
                 alt=""
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
-              <p className="font-bold">Tamara</p>
-              <p className="text-sm text-[#636262]">Graphic Designer</p>
+              <p className="font-bold">Ben Watson</p>
+              <p className="text-sm text-[#636262]">Digital Marketer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -113,12 +115,12 @@ const HighestRatedGig = () => {
             </li>
             <li className="mx-auto flex max-w-xs flex-col items-center gap-4 py-6 md:py-4 text-center">
               <img
-                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635a0f4f5f1f0a93f8aba0d7_Ellipse%2017-1.png"
+                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635a0f55fa526007c5a03e57_Ellipse%2017.png"
                 alt=""
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
-              <p className="font-bold">Amy Parker</p>
-              <p className="text-sm text-[#636262]">Webflow Developer</p>
+              <p className="font-bold">Ben Watson</p>
+              <p className="text-sm text-[#636262]">Digital Marketer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
@@ -136,14 +138,14 @@ const HighestRatedGig = () => {
                 </a>
               </div>
             </li>
-            <li className="mx-auto flex max-w-xs flex-col items-center gap-4 py-6 md:py-4 text-center">
+            <li className="mx-auto flex max-w-xs flex-col items-center gap-4 py-6 md:py-4  text-center">
               <img
-                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635a0f55fa526007c5a03e57_Ellipse%2017.png"
+                src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635a0f4871ea332919af9f8d_Rectangle%2035.png"
                 alt=""
                 className="mb-4 inline-block h-40 w-40 rounded-full object-cover"
               />
-              <p className="font-bold">Ben Watson</p>
-              <p className="text-sm text-[#636262]">Digital Marketer</p>
+              <p className="font-bold">John</p>
+              <p className="text-sm text-[#636262]">React Developer</p>
               <div className="mt-4 flex flex-wrap">
                 <a href="#" className="mr-2 inline-block h-8 w-8 max-w-full">
                   <img
