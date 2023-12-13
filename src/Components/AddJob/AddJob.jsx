@@ -16,7 +16,7 @@ const AddJob = () => {
     const fetchUserDataFromDB = async () => {
       try {
         const response = await axios.get(
-          `https://gig-rapid-server.vercel.app/getUser?email=${user?.email}`
+          `http://localhost:5000/getUser?email=${user?.email}`
         );
         const userData = response.data;
         console.log(userData);
@@ -49,7 +49,7 @@ const AddJob = () => {
     console.log(jobDetails);
 
     axios
-      .post("https://gig-rapid-server.vercel.app/add-job", jobDetails)
+      .post("http://localhost:5000/add-job", jobDetails)
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

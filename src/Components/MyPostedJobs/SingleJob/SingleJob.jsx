@@ -20,7 +20,7 @@ const SingleJob = ({ job, onDelete }) => {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`https://gig-rapid-server.vercel.app/deleteJob?jobId=${job._id}`)
+          .delete(`http://localhost:5000/deleteJob?jobId=${job._id}`)
           .then((res) => {
             console.log(res);
             swal("Success", "Job Deleted Successfully", "success").then(() => {

@@ -31,7 +31,7 @@ const UpdateJob = () => {
     console.log(jobDetails);
 
     axios
-      .post("https://gig-rapid-server.vercel.app/update-job", {
+      .post("http://localhost:5000/update-job", {
         JobId: id,
         JobDetails: jobDetails,
       })

@@ -14,7 +14,7 @@ const BidRequests = () => {
 
   const handleBidderAccept = async (id, verdict) => {
     await axios
-      .post("https://gig-rapid-server.vercel.app/bidderAccept", {
+      .post("http://localhost:5000/bidderAccept", {
         id: id,
         verdict: verdict,
       })
@@ -28,7 +28,7 @@ const BidRequests = () => {
             button: "Okay",
           });
         }
-        axios(`https://gig-rapid-server.vercel.app/getBidderList?jobId=${id}`).then((res) => {
+        axios(`http://localhost:5000/getBidderList?jobId=${id}`).then((res) => {
           console.log(res.data);
           setBidRequestsData(res.data);
           setBtnHide(true);
@@ -41,7 +41,7 @@ const BidRequests = () => {
   useEffect(() => {
     const getBidRequests = async () => {
       await axios
-        .get(`https://gig-rapid-server.vercel.app/getBidRequests?email=${user?.email}`)
+        .get(`http://localhost:5000/getBidRequests?email=${user?.email}`)
         .then((res) => {
           console.log(res.data);
           setBidRequestsData(res.data);
