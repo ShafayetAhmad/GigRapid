@@ -11,7 +11,7 @@ const AllJobs = () => {
   const [bookmarkedJobs, setBookmarkedJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/getAllJobs").then((response) => {
+    axios.get("https://gig-rapid-server.vercel.app/getAllJobs").then((response) => {
       setAllJobs(response.data);
     });
   }, []);

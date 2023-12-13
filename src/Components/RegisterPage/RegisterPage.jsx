@@ -30,7 +30,7 @@ const RegisterPage = () => {
           photoURL: photoUrl,
         };
         axios
-          .post("http://localhost:5000/add-user", {
+          .post("https://gig-rapid-server.vercel.app/add-user", {
             userDetails,
           })
           .then((res) => console.log(res))
@@ -57,7 +57,7 @@ const RegisterPage = () => {
       .then((userCredentials) => {
         console.log(userCredentials);
         axios
-          .post("http://localhost:5000/add-user", {
+          .post("https://gig-rapid-server.vercel.app/add-user", {
             userDetails,
           })
           .then((res) => console.log(res))

@@ -14,7 +14,7 @@ const MyBids = () => {
   useEffect(() => {
     const getMyBids = async () => {
       axios
-        .get(`http://localhost:5000/getMyBids?email=${user?.email}`)
+        .get(`https://gig-rapid-server.vercel.app/getMyBids?email=${user?.email}`)
         .then((res) => {
           console.log(res.data);
           setMyBids(res.data);

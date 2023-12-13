@@ -38,7 +38,7 @@ const JobDetails = () => {
     };
 
     axios
-      .post(`http://localhost:5000/storeBidData`, bidData)
+      .post(`https://gig-rapid-server.vercel.app/storeBidData`, bidData)
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {
@@ -59,7 +59,7 @@ const JobDetails = () => {
   useEffect(() => {
     const getJobData = async () => {
       await axios
-        .get(`http://localhost:5000/singleJobData?id=${id}`)
+        .get(`https://gig-rapid-server.vercel.app/singleJobData?id=${id}`)
         .then((res) => {
           setJobDetails(res.data);
         })
