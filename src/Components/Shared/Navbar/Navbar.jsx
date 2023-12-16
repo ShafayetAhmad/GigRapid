@@ -36,14 +36,16 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUserDataFromDB = async () => {
       try {
-        const response = await axios.get(`https://gig-rapid-server.vercel.app/getUser?email=${user?.email}`);
+        const response = await axios.get(
+          `http://localhost:5000/getUser?email=${user?.email}`
+        );
         const userData = response.data;
-        console.log(userData)
+        console.log(userData);
         setUserFromDB(userData);
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
-    }
+    };
     fetchUserDataFromDB();
   }, [user]);
 
@@ -87,6 +89,14 @@ const Navbar = () => {
           className="dark:hover:text-green-400 hover:text-white"
         >
           Bid Requests
+        </NavLink>
+      </li>
+      <li className="text-lg  ">
+        <NavLink
+          to={"/allJobs"}
+          className="dark:hover:text-green-400 hover:text-white"
+        >
+          All Jobs
         </NavLink>
       </li>
     </>

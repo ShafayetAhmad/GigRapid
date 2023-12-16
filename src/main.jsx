@@ -16,6 +16,7 @@ import UpdateJob from "./Components/MyPostedJobs/UpdateJob/UpdateJob.jsx";
 import BidderList from "./Components/BidderList/BidderList.jsx";
 import BidRequests from "./Components/BidRequests/BidRequests.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import AllJobs from "./Components/AllJobs/AllJobs.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
             <BidRequests></BidRequests>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/allJobs",
+        element: <AllJobs></AllJobs>,
       },
     ],
   },
